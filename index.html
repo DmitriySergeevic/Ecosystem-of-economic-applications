@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ипотечный Калькулятор</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+
+<body>
+    <header class="header-nav">
+        <div class="left-paddinf"></div>
+        <div class="header wrapper">
+            <a href="index.html" class="logo">Rook<span class="orange">A</span>jax</a>
+            <nav>
+                <ul>
+                    <li><a class="item" href="#">Калькуляторы</a>
+                        <ul>
+                            <li><a class="item" href="#">Ипотечный</a></li>
+                            <li><a class="item" href="#">Кредитный</a></li>
+                            <li><a class="item" href="#">Вклад</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="item" href="#">Другое</a>
+                        <ul>
+                            <li><a class="item" href="login.html">О нас</a></li>
+                            <li><a class="item" href="profile.html">Обратная связь</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="item" href="#">Профиль</a>
+                        <ul>
+                            <li><a class="item" href="login.html">Войти</a></li>
+                            <li><a class="item" href="profile.html">Регистрация</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-padding"></div>
+    </header>
+
+    <main class="main container-fluid">
+        <section class="сity row">
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-5 col-md-10 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Расчет ипотеки</h1>
+                        <p class="card-text">
+                        <div class="input-group">
+                            <span class="text">Тип платежа</span>
+                            <select id="type-payment" class="form-select" aria-label="Default select example">
+                                <option value="1">Аннуитентный</option>
+                                <option value="2">Дифференцированный</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Валюта</span>
+                            <select class="form-select" aria-label="Default select example">
+                                <option value="1">$ (доллары)</option>
+                                <option value="2">Р (рубли)</option>
+                            </select>
+                        </div>
+                        </p>
+                        <div class="input-group">
+                            <span class="text">Стоимость квартиры</span>
+                            <input id="summ" type="text" class="form-control" placeholder="введите стоимость"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Первый взнос</span>
+                            <input id="first-payment" type="text" class="form-control" placeholder="введите сумму"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">%</span>
+                            <input id="percent" type="text" class="form-control" placeholder="%"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Процентная ставка</span>
+                            <input id='percent-up' type="text" class="form-control" placeholder="% ставка по кредиту"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Срок кредита </span>
+                            <input id="age" type="text" class="form-control" placeholder="лет"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="button-form"><button id="submit" type="submit"
+                                class="btn btn-primary mb-3">Расчитать</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+
+
+        </section>
+
+        <section class="results_field row">
+            <div class="col-lg-2 col-md-1 col-sm-0"></div>
+            <div class="col-lg-8 col-md-10 col-sm-12 results">
+                <h2 class="result-title">Результаты аннуитентного расчета</h2>
+                <p class="results-text">Ежемесячный платеж:</p>
+                <p id="result-month" class="result-main">14 080 руб.</p>
+                <p class="results-text">Полные затраты с учетом процентов:</p>
+                <p id="result-summ" class="result-min">3 879 213 руб. (194,0% стоимости квартиры)</p>
+                <p class="results-text">Величина переплаты:</p>
+                <p id="result-overpayment" class="result-min">1 879 213 руб. (94,0% стоимости квартиры)</p>
+
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm-0"></div>
+
+        </section>
+
+
+        <section class="graphik row">
+            <div class="col-lg-1 col-md-0 col-sm-0"></div>
+            <div class="col-lg-10 col-md-12 col-sm-12 graph"><canvas class="canvas1" id="ipotek-chart">
+                </canvas></div>
+            <div class="col-lg-1 col-md-0 col-sm-0"></div>
+        </section>
+
+        <section class="info row">
+
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <div class="row info-row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/images/info_img/1.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Удобное расположение. Новостройки в России часто строятся в различных
+                            районах городов, что позволяет выбрать жилье в месте с хорошо развитой инфраструктурой,
+                            близко к метро, школам, магазинам и другим объектам общественного питания.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/images/info_img/2.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Широкий выбор планировок и дизайна. Рынок новостроек в России предлагает
+                            большой выбор квартир различных площадей, планировок и дизайна, что позволяет каждому
+                            покупателю найти идеальный вариант жилья с учетом своих потребностей и предпочтений.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/images/info_img/3.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Современные технологии строительства. Новые дома в России строятся с
+                            использованием новейших технологий и материалов, что повышает их энергоэффективность,
+                            безопасность и комфортность для жильцов.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        </section>
+
+        <section class="video-info">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-4 video-info-content">почему это круто</div>
+                <div class="col-lg-4 video"></div>
+                <div class="col-lg-2"></div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <footer class=" text-white text-center text-lg-start">
+                <!-- Grid container -->
+                <div class="p-4 row">
+                    <!--Grid row-->
+                    <div class="col-lg-1"></div>
+                    <div class="row col-lg-10">
+                        <!--Grid column-->
+                        <div class="footer-text col-lg-8 col-md-12 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Ипотечный Калькулятор.</h5>
+
+                            <p>
+                                Просьба с пониманием отнестись к тому, что ни администрация «Мой сайт», ни кто-либо другой не может нести какую-либо ответственность за
+                                принятые Вами решения или совершенные Вами действия, независимо от того, были ли они
+                                основаны на информации портала мой сайт, на его рекомендациях и пожеланиях или на любой
+                                другой информации.
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <div class="col-lg-1"></div>
+                        <!--Grid column-->
+                        <div class="footer-links col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="footer-link-title text-uppercase">Навигация:</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#!" class="footer-link">Другие Калькуляторы</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">Мой профиль</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">О продукте</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">Поддержка</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+
+
+                    </div>
+                    <div class="col-lg-1"></div>
+
+                    <!--Grid row-->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3">
+                    <a class="text-white" href="index.html">© 2024 Copyright: RookAjax.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </footer>
+    </main>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script/canvas.js"></script>
+
+</body>
+
+</html>
