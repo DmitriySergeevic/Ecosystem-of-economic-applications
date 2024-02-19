@@ -12,7 +12,7 @@ a{
 
 /*header style start*/
 .black-orange{
-    color: rgba(218, 214, 214, 0.87);
+    color: rgb(218, 214, 214);
 }
 .orange{
     color: rgb(255, 255, 255);
@@ -21,7 +21,7 @@ a{
 .header-nav{
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
-    background: rgba(230, 14, 14, 0.87);
+    background: rgb(230, 14, 14);
 }
 
 .header {
@@ -64,16 +64,14 @@ header nav ul li a {
 
 header nav ul li a:hover {
     background-color: rgb(255, 255, 255);
-    color: rgba(230, 14, 14, 0.87);}
+    color: rgb(230, 14, 14);}
 
 nav ul li ul { 
     position: absolute;
     right: 0;
     width: 150px;
-    background: rgba(230, 14, 14, 0.87);    display: none;
+    background: rgb(230, 14, 14);    display: none;
     padding-left: 0;
-
-
 }
 
 nav ul li ul li {
@@ -112,9 +110,7 @@ nav ul li:hover > ul {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
-    
     margin-bottom: 3em;
-    
 }
 
 .row {
@@ -140,7 +136,7 @@ nav ul li:hover > ul {
 
 .card-title{
     color: #fff;
-    background: rgba(230, 14, 14, 0.87); 
+    background: rgba(206, 13, 13, 0.87); 
     padding: 1em;
     text-align: center;
 }
@@ -163,7 +159,6 @@ nav ul li:hover > ul {
 .btn:hover {
     color: rgba(230, 14, 14, 0.87); 
     background: rgba(209, 207, 207, 0.87); 
-
 }
 
 .form-select{
@@ -214,6 +209,12 @@ nav ul li:hover > ul {
     margin-top: 100px;
     text-align: center;
     padding-bottom: 4em;
+}
+
+
+.title-info{
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 .info-row{

@@ -1,0 +1,42 @@
+.сity{
+    background: url(../static/info_img/about-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.title-about{
+    text-align: center;
+    font-size: 5em;
+    padding-top: 1em;
+    font-weight: 4em;
+}
+
+.black-red{
+    color: rgba(212, 14, 14, 0.815);
+}
+.red{
+    color: rgba(255, 45, 45, 0.705);
+}
+
+.footer {
+    margin: 0;
+}
+
+@media (max-width: 720px) {
+    .title-about{
+        font-size: 4em;
+        font-weight: 3em;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .title-about{
+        font-size: 3em;
+        font-weight: 3em;
+    }
+
+}

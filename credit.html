@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ипотечный Калькулятор</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/credit-style.css">
+
+</head>
+
+<body>
+    <header class="header-nav">
+        <div class="left-paddinf"></div>
+        <div class="header wrapper">
+            <a href="index.html" class="logo"><span class="black-orange">Finan</span><span
+                    class="orange">Smart</span></a>
+            <nav>
+                <ul>
+                    <li><a class="item" href="#">Калькуляторы</a>
+                        <ul>
+                            <li><a class="item" href="/index.html">Ипотечный</a></li>
+                            <li><a class="item" href="/credit.html">Кредитный</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="item" href="#">Другое</a>
+                        <ul>
+                            <li><a class="item" href="about.html">О нас</a></li>
+                            <li><a class="item" href="support.html">Обратная связь</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="item" href="#">Профиль</a>
+                        <ul>
+                            <li><a class="item" href="login.html">Войти</a></li>
+                            <li><a class="item" href="register.html">Регистрация</a></li>
+                            <li><a class="item" href="profil.html">Мой профиль</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-padding"></div>
+    </header>
+
+    <main class="main container-fluid">
+        <section class="сity row">
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-5 col-md-10 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Расчет кредита</h1>
+                        <p class="card-text">
+                        <div class="input-group">
+                            <span class="text">Тип платежа</span>
+                            <select id="type-payment" class="form-select" aria-label="Default select example">
+                                <option value="1">Аннуитентный</option>
+                                <option value="2">Дифференцированный</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Валюта</span>
+                            <select class="form-select" aria-label="Default select example">
+                                <option value="1">$ (доллары)</option>
+                                <option value="2">Р (рубли)</option>
+                            </select>
+                        </div>
+                        </p>
+                        <div class="input-group">
+                            <span class="text">Сумма кредита</span>
+                            <input value="5 000 000" id="summ" type="text" class="form-control"
+                                placeholder="введите стоимость"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Процентная ставка</span>
+                            <input id='percent-up' type="text" class="form-control" placeholder="% ставка по кредиту"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                        </div>
+                        <div class="input-group">
+                            <span class="text">Срок кредита </span>
+                            <input id="age" type="text" class="form-control" placeholder="лет"
+                                aria-label="Dollar amount (with dot and two decimal places)">
+                            <select id="type-payment term" class="form-select term" aria-label="Default select example">
+                                <option value="1">Лет</option>
+                                <option value="2">Месяцев</option>
+                            </select>
+                        </div>
+                        <div class="button-form"><a href="#result-title"><button id="submit" type="submit"
+                                    class="btn btn-primary mb-3">Расчитать</button></a></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+
+
+        </section>
+        <div id="account" class="account">
+
+            <section id="result-title" class="results_field row">
+                <div class="col-lg-2 col-md-1 col-sm-0"></div>
+                <div class="col-lg-8 col-md-10 col-sm-12 results">
+                    <h2 class="result-title">Результаты аннуитентного расчета</h2>
+                    <p class="results-text">Ежемесячный платеж:</p>
+                    <p id="result-month" class="result-main">14 080 руб.</p>
+                    <p class="results-text">Полные затраты с учетом процентов:</p>
+                    <p id="result-summ" class="result-min">3 879 213 руб. (194,0% стоимости квартиры)</p>
+                    <p class="results-text">Величина переплаты:</p>
+                    <p id="result-overpayment" class="result-min">1 879 213 руб. (94,0% стоимости квартиры)</p>
+
+                </div>
+                <div class="col-lg-2 col-md-1 col-sm-0"></div>
+
+            </section>
+
+
+            <section class="graphik row">
+                <div class="col-lg-1 col-md-0 col-sm-0"></div>
+                <div class="col-lg-10 col-md-12 col-sm-12 graph"><canvas class="canvas1" id="ipotek-chart">
+                    </canvas></div>
+                <div class="col-lg-1 col-md-0 col-sm-0"></div>
+            </section>
+        </div>
+
+        <section class="info row">
+
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+                <h2 class="title-info">Особенности</h2>
+                <div class="row info-row">
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/info_img/cred-1.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Высокие процентные ставки: В сравнении с некоторыми другими странами, в
+                            России процентные ставки по кредитам часто являются довольно высокими. Это делает кредиты
+                            дорогостоящими для заемщиков и может привести к накоплению больших сумм задолженности.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/info_img/cred-2.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Сложные условия кредитования: Банки в России часто устанавливают жесткие
+                            требования к заемщикам, такие как высокий доход, хорошая кредитная история и надежные
+                            поручители. Это может ограничивать доступ к кредитам для многих людей и делать процесс
+                            получения кредита более сложным.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12 infos-container">
+                        <div class="img-container"><img class="img-info" src="static/info_img/cred-3.jpeg" alt="">
+                        </div>
+                        <p class="text-infos">Рост долговой нагрузки: В России наблюдается увеличение количества людей,
+                            имеющих долговую нагрузку. Это может привести к финансовым проблемам и ухудшению кредитной
+                            истории заемщика, что, в свою очередь, может усложнить получение кредитов в будущем.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        </section>
+
+        <section class="video-info">
+            <h2 class="title-video-info">Рынок в России</h2>
+            <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                <div class="video-row row col-lg-10 col-md-10">
+                    <div class="col-lg-6 col-md-12 col-sm-10 video-info-content">
+                        <p>Кредиты являются обычным финансовым инструментом для многих россиян. Согласно статистике,
+                            большинство граждан в России имеют опыт взятия кредитов на различные нужды, такие как
+                            покупка недвижимости, автомобиля, образование или покрытие неожиданных расходов. С каждым
+                            годом количество заемщиков в стране продолжает расти, что свидетельствует о популярности
+                            кредитования среди населения. Однако важно помнить, что умелое управление кредитами и
+                            ответственное погашение задолженностей являются ключевыми аспектами финансового благополучия
+                            и избегания проблем с долгами.</p>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12 video-content">
+                        <img class="video" src="static/info_img/cred-vid.jpeg" alt="city">
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <footer class=" text-white text-center text-lg-start">
+                <!-- Grid container -->
+                <div class="p-4 row">
+                    <!--Grid row-->
+                    <div class="col-lg-1"></div>
+                    <div class="row col-lg-10">
+                        <!--Grid column-->
+                        <div class="footer-text col-lg-8 col-md-12 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Ипотечный Калькулятор.</h5>
+
+                            <p>
+                                Просьба с пониманием отнестись к тому, что ни администрация «FinanSmart», ни кто-либо
+                                другой не может нести какую-либо ответственность за
+                                принятые Вами решения или совершенные Вами действия, независимо от того, были ли они
+                                основаны на информации портала «FinanSmart», на его рекомендациях и пожеланиях или на
+                                любой
+                                другой информации.
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <div class="col-lg-1"></div>
+                        <!--Grid column-->
+                        <div class="footer-links col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="footer-link-title text-uppercase">Навигация:</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="#!" class="footer-link">На главную</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">Мой профиль</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">О продукте</a>
+                                </li>
+                                <li>
+                                    <a href="#!" class="footer-link">Поддержка</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+
+
+                    </div>
+                    <div class="col-lg-1"></div>
+
+                    <!--Grid row-->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3">
+                    <a class="text-white" href="index.html">© 2024 Copyright: FinanSmart.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </footer>
+    </main>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script/canvas-credit.js"></script>
+
+</body>
+
+</html>

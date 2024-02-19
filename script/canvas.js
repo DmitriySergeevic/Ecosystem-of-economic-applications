@@ -79,7 +79,7 @@ function formator(str) {
 function range(end) {
     let result = [];
     for (let i = 1; i !== end + 1; i++) {
-        result.push(i + ' год');
+        result.push(i+2023 + ' г.');
     }
 
     return result;
