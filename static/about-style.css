@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -20,6 +20,34 @@
 .red{
     color: rgba(255, 45, 45, 0.705);
 }
+
+
+.left-text-content{
+    background-color: rgba(255, 255, 255, 0.781);
+    border-radius: 20%;
+    padding: 1em;
+    border: solid;
+}
+
+.left-text{
+    align-items: center;
+    text-align: center;
+}
+.right-content{
+    justify-content: space-between;
+    text-align: center;
+    
+}
+.right-text{
+    border: solid;
+
+    align-items: center;
+    text-align: center;
+    border-radius:20%;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.842);
+}
+
 
 .footer {
     margin: 0;

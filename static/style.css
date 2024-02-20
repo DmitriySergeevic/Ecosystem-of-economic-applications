@@ -266,7 +266,7 @@ nav ul li:hover > ul {
 /*footer style start*/
 
 .footer {
-
+    font-size: .9em;
     margin-top: 4em;
     background-color: #292929;
 }
