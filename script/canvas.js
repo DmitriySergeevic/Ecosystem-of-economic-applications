@@ -18,7 +18,7 @@ if (+age_field.value>50){
 
 
 
-function annuity_payment(year=1, summ_kredita=1, first_payment=1, stavka_percent_year=1) {
+function annuity_payment(year=1, summ_credita=1, first_payment=1, stavka_percent_year=1) {
     let data = []
     let data_percent = []
     let data_main = []
@@ -26,9 +26,9 @@ function annuity_payment(year=1, summ_kredita=1, first_payment=1, stavka_percent
     
     month_stavka = stavka_percent_year / 12 / 100
 
-    summ = summ_kredita - first_payment
-    all_stavka = (1 + month_stavka) ** (year * 12)
-    month_payment = summ * month_stavka * all_stavka / (all_stavka - 1)
+    summ = summ_credita - first_payment
+    all_rate = (1 + month_stavka) ** (year * 12)
+    month_payment = summ * month_stavka * all_rate / (all_rate - 1)
     all_summ = year * 12 * month_payment
 
     percen_part = summ * month_stavka
@@ -54,7 +54,7 @@ function annuity_payment(year=1, summ_kredita=1, first_payment=1, stavka_percent
         all = all + percen_part + main_part
     }
 
-    overpayment = all - summ_kredita
+    overpayment = all - summ_credita
     data.push(month_payment)
     data.push(all)
     data.push(overpayment)
@@ -97,20 +97,20 @@ let data = {
     labels: range(10),
     datasets: [{
         label: "Тело кредита",
-        backgroundColor: "rgba(10, 93, 194,0.7)",
-        borderColor: "rgba(10, 93, 194,1)",
+        backgroundColor: "rgba(242, 36, 36,0.7)",
+        borderColor: "rgba(242, 36, 36,1)",
         borderWidth: 2,
-        hoverBackgroundColor: "rgba(10, 93, 194,0.9)",
-        hoverBorderColor: "rgba(10, 93, 194,1)",
+        hoverBackgroundColor: "rgba(242, 36, 36,0.9)",
+        hoverBorderColor: "rgba(242, 36, 36,1)",
         data: [65, 59, 20, 81, 56, 55, 40, 59, 20, 81],
     },
     {
         label: "Проценты банка",
-        backgroundColor: "rgba(42, 122, 219,0.3)",
-        borderColor: "rgba(42, 122, 219, 1)",
+        backgroundColor: "rgba(242, 36, 36,0.3)",
+        borderColor: "rgba(242, 36, 36, 1)",
         borderWidth: 2,
-        hoverBackgroundColor: "rgba(42, 122, 219,0.5)",
-        hoverBorderColor: "rgba(42, 122, 219,1)",
+        hoverBackgroundColor: "rgba(242, 36, 36,0.5)",
+        hoverBorderColor: "rgba(242, 36, 36,1)",
         data: [85, 89, 80, 91, 56, 55, 40, 59, 20, 81],
     }]
 };
