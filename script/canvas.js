@@ -5,6 +5,7 @@ let result_month = document.getElementById('result-month')
 let result_summ = document.getElementById('result-summ')
 let result_overpayment = document.getElementById('result-overpayment')
 
+let valute = document.getElementById('valute')
 let type_payment = document.getElementById('type-payment')
 let summ_field = document.getElementById("summ")
 let first_payment_field = document.getElementById("first-payment")
@@ -123,7 +124,7 @@ function formator(str) {
 
 function range(end) {
     let result = [];
-    for (let i = 1; i !== end + 1; i++) {
+    for (let i = 1; i < end + 1; i++) {
         result.push(i + 2023 + ' г.');
     }
 
@@ -138,7 +139,7 @@ let ctx = document.getElementById('ipotek-chart');
 
 
 let data = {
-    label: 'ГРа',
+    label: '',
     labels: range(10),
     datasets: [{
         label: "Тело кредита",
@@ -192,8 +193,14 @@ let my_chart = new Chart(ctx, {
 
 submit_btn.onclick = function () {
 
-
-    console.log(type_payment.value)
+    console.log(valute)
+    console.log(valute.value)
+    if (valute.value == 1) {
+        valutes = ' руб.'
+    }
+    else if (valute.value == 2) {
+        valutes = ' $'
+    }
 
 
     if (type_payment.value == 1) {
@@ -208,13 +215,13 @@ submit_btn.onclick = function () {
 
 
     if (type_payment.value == 1){
-        result_month.innerHTML = Math.round(date.date[0], 2) + ' руб.'
+        result_month.innerHTML = Math.round(date.date[0], 2) + valutes
     }
     else if (type_payment.value == 2){
-        result_month.innerHTML = Math.round(date.date[0], 2) + '-' + Math.round(date.date[3], 2) + ' руб.'
+        result_month.innerHTML = Math.round(date.date[0], 2) + '-' + Math.round(date.date[3], 2) + valutes
     }
-    result_summ.innerHTML = Math.round(date.date[1], 2) + ' руб.' + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100), 2) + ' %)'
-    result_overpayment.innerHTML = Math.round(date.date[2], 2) + ' руб.' + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100 - 100), 2) + ' %)'
+    result_summ.innerHTML = Math.round(date.date[1], 2) +  valutes + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100), 2) + ' %)'
+    result_overpayment.innerHTML = Math.round(date.date[2], 2) + valutes + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100 - 100), 2) + ' %)'
 
 
     my_chart.data.datasets[0].data = date.date_main

@@ -5,13 +5,17 @@ let result_month = document.getElementById('result-month')
 let result_summ = document.getElementById('result-summ')
 let result_overpayment = document.getElementById('result-overpayment')
 
+let valute = document.getElementById('valute')
 let type_payment = document.getElementById('type-payment')
 let summ_field = document.getElementById("summ")
 let percent_up = document.getElementById("percent-up")
 let age_field = document.getElementById('age')
 
 
+console.log(Number(1.3))
+
 function annuity_payment(year=1, summ_credita=1, stavka_percent_year=1) {
+    console.log(year, summ_credita, stavka_percent_year)
     let data = []
     let data_percent = []
     let data_main = []
@@ -62,16 +66,65 @@ function annuity_payment(year=1, summ_credita=1, stavka_percent_year=1) {
 }
 
 
-function differentiated_payment() { }
+function differentiated_payment(years = 1, summ_credita = 1, rate_percent_years = 1) { 
+    let data = []
+    let data_percent = []
+    let data_main = []
+
+    month_rate = rate_percent_years / 12 / 100
+    
+    summ = summ_credita
+
+    main_part = summ / (years * 12)
+    percent_part = summ * month_rate
+    month_payment = main_part + percent_part
+
+
+    all = 0
+    x = 0
+
+    for (let i = 1; i < 12 * years + 1; i++) {
+        x += 1
+        if (x === 12) {
+            data_main.push(Math.round(main_part, 2))
+            data_percent.push(Math.round(percen_part, 2))
+            x = 1
+        }
+
+        percen_part = summ * month_rate
+
+
+        summ = summ - main_part
+
+        all = all + percen_part + main_part
+    }
+    month_payment_last = main_part + percen_part
+    console.log(month_payment_last)
+    overpayment = all - summ_credita
+    data.push(month_payment)
+    data.push(all)
+    data.push(overpayment)
+    data.push(month_payment_last)
+
+    data_object = {
+        date: data,
+        date_percent: data_percent,
+        date_main: data_main,
+    }
+
+    return data_object
+}
+
 
 function formator(str) {
+    console.log(Number(str.replace(/[^.\d]/g, '')))
     return (Number(str.replace(/[^.\d]/g, '')));
 }
 
 
 function range(end) {
     let result = [];
-    for (let i = 1; i !== end + 1; i++) {
+    for (let i = 1; i < end + 1; i++) {
         result.push(i+2023 + ' г.');
     }
 
@@ -86,7 +139,7 @@ let ctx = document.getElementById('ipotek-chart');
 
 
 let data = {
-    label: 'ГРа',
+    label: '',
     labels: range(10),
     datasets: [{
         label: "Тело кредита",
@@ -140,14 +193,33 @@ let my_chart = new Chart(ctx, {
 
 submit_btn.onclick = function () {
 
-    document.getElementById("account").style.display = "block"; 
+    if (valute.value == 1) {
+        valutes = ' руб.'
+    }
+    else if (valute.value == 2) {
+        valutes = ' $'
+    }
 
 
-    date = annuity_payment(formator(age_field.value), formator(summ_field.value), formator(percent_up.value))
-    
-    result_month.innerHTML = Math.round(date.date[0],2) + ' руб.'
-    result_summ.innerHTML = Math.round(date.date[1],2) + ' руб.' + ' (' + Math.round(((date.date[1])/formator(summ_field.value)*100),2) + ' %)'
-    result_overpayment.innerHTML = Math.round(date.date[2],2) + ' руб.' + ' (' + Math.round(((date.date[1])/formator(summ_field.value)*100-100),2) + ' %)'
+    if (type_payment.value == 1) {
+        date = annuity_payment(formator(age_field.value), formator(summ_field.value), formator(percent_up.value))
+    }
+    else if (type_payment.value == 2) {
+        date = differentiated_payment(formator(age_field.value), formator(summ_field.value), formator(percent_up.value))
+    }
+
+
+    document.getElementById("account").style.display = "block";
+
+
+    if (type_payment.value == 1){
+        result_month.innerHTML = Math.round(date.date[0], 2) + valutes
+    }
+    else if (type_payment.value == 2){
+        result_month.innerHTML = Math.round(date.date[0], 2) + '-' + Math.round(date.date[3], 2) + valutes
+    }
+    result_summ.innerHTML = Math.round(date.date[1], 2) +  valutes + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100), 2) + ' %)'
+    result_overpayment.innerHTML = Math.round(date.date[2], 2) + valutes + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100 - 100), 2) + ' %)'
 
 
     my_chart.data.datasets[0].data = date.date_main
