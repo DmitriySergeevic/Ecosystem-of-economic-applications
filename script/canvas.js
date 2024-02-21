@@ -12,43 +12,40 @@ let percent_field = document.getElementById("percent")
 let percent_up = document.getElementById("percent-up")
 let age_field = document.getElementById('age')
 
-if (+age_field.value>50){
-    age_field.value = 50
-}
 
 
 
-function annuity_payment(year=1, summ_credita=1, first_payment=1, stavka_percent_year=1) {
+function annuity_payment(years = 1, summ_credita = 1, first_payment = 1, rate_percent_years = 1) {
     let data = []
     let data_percent = []
     let data_main = []
 
-    
-    month_stavka = stavka_percent_year / 12 / 100
+
+    month_rate = rate_percent_years / 12 / 100
 
     summ = summ_credita - first_payment
-    all_rate = (1 + month_stavka) ** (year * 12)
-    month_payment = summ * month_stavka * all_rate / (all_rate - 1)
-    all_summ = year * 12 * month_payment
+    all_rate = (1 + month_rate) ** (years * 12)
+    month_payment = summ * month_rate * all_rate / (all_rate - 1)
+    all_summ = years * 12 * month_payment
 
-    percen_part = summ * month_stavka
+    percen_part = summ * month_rate
     main_part = month_payment - percen_part
 
     all = first_payment
     x = 0
 
-    for (let i = 1; i < 12 * year + 1; i++) {
+    for (let i = 1; i < 12 * years + 1; i++) {
         x += 1
-        if (x===12){
-            data_main.push(Math.round(main_part,2))
-            data_percent.push(Math.round(percen_part,2))
-            x=1
+        if (x === 12) {
+            data_main.push(Math.round(main_part, 2))
+            data_percent.push(Math.round(percen_part, 2))
+            x = 1
         }
-        
-        percen_part = summ * month_stavka
+
+        percen_part = summ * month_rate
         main_part = month_payment - percen_part
 
-        
+
         summ = summ - main_part
 
         all = all + percen_part + main_part
@@ -60,16 +57,64 @@ function annuity_payment(year=1, summ_credita=1, first_payment=1, stavka_percent
     data.push(overpayment)
 
     data_object = {
-        date:data,
-        date_percent:data_percent,
-        date_main:data_main,
+        date: data,
+        date_percent: data_percent,
+        date_main: data_main,
+    }
+
+    return data_object
+}
+
+function differentiated_payment(years = 1, summ_credita = 1, first_payment = 1, rate_percent_years = 1) { 
+    let data = []
+    let data_percent = []
+    let data_main = []
+
+    month_rate = rate_percent_years / 12 / 100
+    
+    summ = summ_credita - first_payment
+
+    main_part = summ / (years * 12)
+    percent_part = summ * month_rate
+    month_payment = main_part + percent_part
+
+
+    all = first_payment
+    x = 0
+
+    for (let i = 1; i < 12 * years + 1; i++) {
+        x += 1
+        if (x === 12) {
+            data_main.push(Math.round(main_part, 2))
+            data_percent.push(Math.round(percen_part, 2))
+            x = 1
+        }
+
+        percen_part = summ * month_rate
+
+
+        summ = summ - main_part
+
+        all = all + percen_part + main_part
+    }
+    month_payment_last = main_part + percen_part
+    console.log(month_payment_last)
+    overpayment = all - summ_credita
+    data.push(month_payment)
+    data.push(all)
+    data.push(overpayment)
+    data.push(month_payment_last)
+
+    data_object = {
+        date: data,
+        date_percent: data_percent,
+        date_main: data_main,
     }
 
     return data_object
 }
 
 
-function differentiated_payment() { }
 
 function formator(str) {
     return (Number(str.replace(/[^.\d]/g, '')));
@@ -79,7 +124,7 @@ function formator(str) {
 function range(end) {
     let result = [];
     for (let i = 1; i !== end + 1; i++) {
-        result.push(i+2023 + ' г.');
+        result.push(i + 2023 + ' г.');
     }
 
     return result;
@@ -147,14 +192,29 @@ let my_chart = new Chart(ctx, {
 
 submit_btn.onclick = function () {
 
-    document.getElementById("account").style.display = "block"; 
+
+    console.log(type_payment.value)
 
 
-    date = annuity_payment(formator(age_field.value), formator(summ_field.value), formator(first_payment_field.value), formator(percent_up.value))
-    
-    result_month.innerHTML = Math.round(date.date[0],2) + ' руб.'
-    result_summ.innerHTML = Math.round(date.date[1],2) + ' руб.' + ' (' + Math.round(((date.date[1])/formator(summ_field.value)*100),2) + ' %)'
-    result_overpayment.innerHTML = Math.round(date.date[2],2) + ' руб.' + ' (' + Math.round(((date.date[1])/formator(summ_field.value)*100-100),2) + ' %)'
+    if (type_payment.value == 1) {
+        date = annuity_payment(formator(age_field.value), formator(summ_field.value), formator(first_payment_field.value), formator(percent_up.value))
+    }
+    else if (type_payment.value == 2) {
+        date = differentiated_payment(formator(age_field.value), formator(summ_field.value), formator(first_payment_field.value), formator(percent_up.value))
+    }
+
+
+    document.getElementById("account").style.display = "block";
+
+
+    if (type_payment.value == 1){
+        result_month.innerHTML = Math.round(date.date[0], 2) + ' руб.'
+    }
+    else if (type_payment.value == 2){
+        result_month.innerHTML = Math.round(date.date[0], 2) + '-' + Math.round(date.date[3], 2) + ' руб.'
+    }
+    result_summ.innerHTML = Math.round(date.date[1], 2) + ' руб.' + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100), 2) + ' %)'
+    result_overpayment.innerHTML = Math.round(date.date[2], 2) + ' руб.' + ' (' + Math.round(((date.date[1]) / formator(summ_field.value) * 100 - 100), 2) + ' %)'
 
 
     my_chart.data.datasets[0].data = date.date_main
