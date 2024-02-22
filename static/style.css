@@ -21,7 +21,7 @@ a{
 .header-nav{
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
-    background: rgb(230, 14, 14);
+    background: brown;
 }
 
 .header {
@@ -64,13 +64,14 @@ header nav ul li a {
 
 header nav ul li a:hover {
     background-color: rgb(255, 255, 255);
-    color: rgb(230, 14, 14);}
+    color:brown;}
 
 nav ul li ul { 
     position: absolute;
     right: 0;
     width: 150px;
-    background: rgb(230, 14, 14);    display: none;
+    background: brown;
+    display: none;
     padding-left: 0;
 }
 
@@ -136,7 +137,7 @@ nav ul li:hover > ul {
 
 .card-title{
     color: #fff;
-    background: rgba(206, 13, 13, 0.87); 
+    background: brown; 
     padding: 1em;
     text-align: center;
 }
@@ -151,14 +152,15 @@ nav ul li:hover > ul {
 }
 
 .btn{
-    background: rgba(230, 14, 14, 0.87); 
-    border: black;
+    border: solid 1px;
+    background:brown; 
     font-size: 1.2em;
 }
 
 .btn:hover {
-    color: rgba(230, 14, 14, 0.87); 
-    background: rgba(209, 207, 207, 0.87); 
+    border: solid 1px;
+    color:brown; 
+    background: rgb(255, 255, 255); 
 }
 
 .form-select{

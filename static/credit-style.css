@@ -31,13 +31,12 @@ nav ul li ul {
 
 .btn{
     background: rgba(34, 187, 20, 0.87);
-    border: black;
     font-size: 1.2em;
 }
 
 .btn:hover {
     color: rgba(35, 202, 20, 0.87);
-    background: rgb(211, 206, 206); 
+    background: rgb(255, 255, 255); 
 }
 
 .term {
