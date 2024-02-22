@@ -5,6 +5,7 @@ let result_month = document.getElementById('result-month')
 let result_summ = document.getElementById('result-summ')
 let result_overpayment = document.getElementById('result-overpayment')
 
+let term = document.getElementById('term')
 let valute = document.getElementById('valute')
 let type_payment = document.getElementById('type-payment')
 let summ_field = document.getElementById("summ")
@@ -12,10 +13,8 @@ let percent_up = document.getElementById("percent-up")
 let age_field = document.getElementById('age')
 
 
-console.log(Number(1.3))
 
-function annuity_payment(year=1, summ_credita=1, stavka_percent_year=1) {
-    console.log(year, summ_credita, stavka_percent_year)
+function annuity_payment(years=1, summ_credita=1, stavka_percent_year=1) {
     let data = []
     let data_percent = []
     let data_main = []
@@ -24,9 +23,9 @@ function annuity_payment(year=1, summ_credita=1, stavka_percent_year=1) {
     month_stavka = stavka_percent_year / 12 / 100
 
     summ = summ_credita 
-    all_rate = (1 + month_stavka) ** (year * 12)
+    all_rate = (1 + month_stavka) ** (years * 12)
     month_payment = summ * month_stavka * all_rate / (all_rate - 1)
-    all_summ = year * 12 * month_payment
+    all_summ = years * 12 * month_payment
 
     percen_part = summ * month_stavka
     main_part = month_payment - percen_part
@@ -34,12 +33,12 @@ function annuity_payment(year=1, summ_credita=1, stavka_percent_year=1) {
     all = 0
     x = 0
 
-    for (let i = 1; i < 12 * year + 1; i++) {
+    for (let i = 1; i < 12 * years + 1; i++) {
         x += 1
-        if (x===12){
+        if (x === years){
             data_main.push(Math.round(main_part,2))
             data_percent.push(Math.round(percen_part,2))
-            x=1
+            x=0
         }
         
         percen_part = summ * month_stavka
@@ -85,21 +84,20 @@ function differentiated_payment(years = 1, summ_credita = 1, rate_percent_years 
 
     for (let i = 1; i < 12 * years + 1; i++) {
         x += 1
-        if (x === 12) {
+        if (x === years) {
             data_main.push(Math.round(main_part, 2))
-            data_percent.push(Math.round(percen_part, 2))
-            x = 1
+            data_percent.push(Math.round(percent_part, 2))
+            x = 0
         }
 
-        percen_part = summ * month_rate
+        percent_part = summ * month_rate
 
 
         summ = summ - main_part
 
-        all = all + percen_part + main_part
+        all = all + percent_part + main_part
     }
-    month_payment_last = main_part + percen_part
-    console.log(month_payment_last)
+    month_payment_last = main_part + percent_part
     overpayment = all - summ_credita
     data.push(month_payment)
     data.push(all)
@@ -111,26 +109,25 @@ function differentiated_payment(years = 1, summ_credita = 1, rate_percent_years 
         date_percent: data_percent,
         date_main: data_main,
     }
-
+    console.log(data_object)
     return data_object
 }
 
 
 function formator(str) {
-    console.log(Number(str.replace(/[^.\d]/g, '')))
     return (Number(str.replace(/[^.\d]/g, '')));
 }
 
 
 function range(end) {
     let result = [];
+
     for (let i = 1; i < end + 1; i++) {
-        result.push(i+2023 + ' г.');
+        result.push(i*age_field.value-age_field.value+1 + 'мес.');
     }
 
     return result;
 }
-
 
 
 
@@ -140,7 +137,7 @@ let ctx = document.getElementById('ipotek-chart');
 
 let data = {
     label: '',
-    labels: range(10),
+    labels: [1,2,3,4,5,6,7,8,9,10],
     datasets: [{
         label: "Тело кредита",
         backgroundColor: "rgba(96, 245, 66,0.7)",
@@ -193,6 +190,7 @@ let my_chart = new Chart(ctx, {
 
 submit_btn.onclick = function () {
 
+
     if (valute.value == 1) {
         valutes = ' руб.'
     }
@@ -226,7 +224,8 @@ submit_btn.onclick = function () {
     my_chart.data.datasets[1].data = date.date_percent
     my_chart.options.scales.y.suggestedMax = date.date[0]
 
-    my_chart.data.labels = range(formator(age_field.value))
+    console.log(date.date_main.length)
+    my_chart.data.labels = range(date.date_main.length)
 
     my_chart.update()
 }

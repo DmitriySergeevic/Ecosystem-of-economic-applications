@@ -35,12 +35,12 @@ function annuity_payment(years = 1, summ_credita = 1, first_payment = 1, rate_pe
     all = first_payment
     x = 0
 
-    for (let i = 1; i < 12 * years + 1; i++) {
+    for (let i = 1; i < 12 * years +1; i++) {
         x += 1
         if (x === 12) {
             data_main.push(Math.round(main_part, 2))
             data_percent.push(Math.round(percen_part, 2))
-            x = 1
+            x = 0
         }
 
         percen_part = summ * month_rate
@@ -83,12 +83,12 @@ function differentiated_payment(years = 1, summ_credita = 1, first_payment = 1, 
     all = first_payment
     x = 0
 
-    for (let i = 1; i < 12 * years + 1; i++) {
+    for (let i = 1; i < 12 * years +1; i++) {
         x += 1
         if (x === 12) {
             data_main.push(Math.round(main_part, 2))
             data_percent.push(Math.round(percen_part, 2))
-            x = 1
+            x = 0
         }
 
         percen_part = summ * month_rate
@@ -192,7 +192,7 @@ let my_chart = new Chart(ctx, {
 
 
 submit_btn.onclick = function () {
-
+    
     console.log(valute)
     console.log(valute.value)
     if (valute.value == 1) {
