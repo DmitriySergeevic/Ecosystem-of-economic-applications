@@ -1,44 +1,47 @@
-main{
+.main {
+    background-color: rgb(255, 255, 255);
     min-height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-
-.form-container{
-    width:  400px;
-    height: 500px;
-
-}
-
-.block{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.2);
-}
-
-.form-login{
-
-    padding: 50px;
-    font-size: 16px;
-}
-
-.title-form{
-    font-size: 1.6rem;
+.main-title {
+    padding: 50px 0;
     font-weight: 500;
-    color: #333;
-    padding-bottom: 20px;
 }
 
-.form-input{
+.profil-item {
+    padding: 1em;
+
+}
+
+.container{
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.2);
+
+    padding: 20px 30px;
+}
+
+.avatar-profile {
+    text-align: center;
+
+}
+
+.avatar {
+    width: 100%;
+}
+
+.title-profil-info{
+    font-weight: 400;
+    font-size: 2rem
+}
+
+.form-control{
     width: 100%;
     padding: 10px;
     border: solid 1px #333;
 }
 
 .form-btn{
+    text-align: center;
+    margin-top: 25px;
     color: white;
     cursor: pointer;
     padding: 10px 50px;

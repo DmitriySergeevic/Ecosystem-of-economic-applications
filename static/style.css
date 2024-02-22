@@ -12,7 +12,7 @@ a{
 
 /*header style start*/
 .black-orange{
-    color: rgb(218, 214, 214);
+    color: rgba(201, 201, 201, 0.877);
 }
 .orange{
     color: rgb(255, 255, 255);
@@ -205,6 +205,36 @@ nav ul li:hover > ul {
 
 
 
+/* account-buttons style start */
+.account-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 0 30px;
+    padding-top: 40px;
+
+}
+
+.form-btn{
+    color: white;
+    cursor: pointer;
+    padding: 10px 50px;
+    background-color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .2s;
+    border: solid 1px;
+}
+
+.form-btn:hover {
+    background-color: white;
+    color: rgb(10, 10, 10);
+    border: solid 1px;
+}
+
+/* account-buttons style end */
+
+
+
 /*info style start*/
 
 .info{   
@@ -268,7 +298,8 @@ nav ul li:hover > ul {
 /*footer style start*/
 
 .footer {
-    font-size: .9em;
+
+    font-size: 1.1em;
     margin-top: 4em;
     background-color: #292929;
 }
@@ -289,3 +320,16 @@ nav ul li:hover > ul {
 
 /*footer style end*/
 
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #account, #account * {
+        visibility: visible;
+    }
+    #account {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}

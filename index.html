@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ипотечный Калькулятор</title>
+    <title>FinanSmart - Ипотечный Калькулятор</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="static/style.css">
@@ -70,7 +70,8 @@
                         </p>
                         <div class="input-group">
                             <span class="text">Стоимость квартиры</span>
-                            <input value="5 000 000" id="summ" type="text" class="form-control" placeholder="введите стоимость"
+                            <input value="5 000 000" id="summ" type="text" class="form-control"
+                                placeholder="введите стоимость"
                                 aria-label="Dollar amount (with dot and two decimal places)">
                         </div>
                         <div class="input-group">
@@ -130,6 +131,15 @@
                     </canvas></div>
                 <div class="col-lg-1 col-md-0 col-sm-0"></div>
             </section>
+
+            <section class="account-buttons">
+                <p>
+                    <button id="save-btn" class="form-btn">Сохранить</button>
+                </p>
+                <p>
+                    <button  onclick="window.print()" id="print-btn" class="form-btn">Распечатать</button>
+                </p>
+            </section>
         </div>
 
         <section class="info row">
@@ -164,7 +174,7 @@
             </div>
             <div class="col-lg-1 col-md-1 col-sm-1"></div>
         </section>
-        
+
         <section class="video-info">
             <h2 class="title-video-info">Рынок в России</h2>
             <div class="row">
@@ -172,10 +182,12 @@
                 <div class="video-row row col-lg-10 col-md-10">
                     <div class="col-lg-6 col-md-12 col-sm-10 video-info-content">
                         <p>В России ипотечное кредитование является популярной формой финансирования приобретения жилья.
-                            Согласно статистике, каждый год около 1-1,5 миллионов человек берут ипотеку в России. Повышенный
+                            Согласно статистике, каждый год около 1-1,5 миллионов человек берут ипотеку в России.
+                            Повышенный
                             интерес к ипотечным кредитам объясняется не только стремлением к собственному жилью, но и
                             увеличением доступности ипотечных программ, включая более низкие процентные ставки и удобные
-                            условия погашения кредита. В связи с этим, ипотека становится важным инструментом для решения
+                            условия погашения кредита. В связи с этим, ипотека становится важным инструментом для
+                            решения
                             жилищных вопросов и семейного благополучия в современной российской экономике.</p>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 video-content">
@@ -186,67 +198,67 @@
             </div>
 
         </section>
-
-        <footer class="footer">
-            <footer class=" text-white text-center text-lg-start">
-                <!-- Grid container -->
-                <div class="p-4 row">
-                    <!--Grid row-->
-                    <div class="col-lg-1"></div>
-                    <div class="row col-lg-10">
-                        <!--Grid column-->
-                        <div class="footer-text col-lg-8 col-md-12 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Ипотечный Калькулятор.</h5>
-
-                            <p>
-                                Просьба с пониманием отнестись к тому, что ни администрация «FinanSmart», ни кто-либо
-                                другой не может нести какую-либо ответственность за
-                                принятые Вами решения или совершенные Вами действия, независимо от того, были ли они
-                                основаны на информации портала «FinanSmart», на его рекомендациях и пожеланиях или на
-                                любой
-                                другой информации.
-                            </p>
-                        </div>
-                        <!--Grid column-->
-                        <div class="col-lg-1"></div>
-                        <!--Grid column-->
-                        <div class="footer-links col-lg-3 col-md-6 mb-4 mb-md-0">
-                            <h5 class="footer-link-title text-uppercase">Навигация:</h5>
-
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="#" class="footer-link">На главную</a>
-                                </li>
-                                <li>
-                                    <a href="profil.html" class="footer-link">Мой профиль</a>
-                                </li>
-                                <li>
-                                    <a href="about.html" class="footer-link">О продукте</a>
-                                </li>
-                                <li>
-                                    <a href="support.html" class="footer-link">Поддержка</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--Grid column-->
-
-
-                    </div>
-                    <div class="col-lg-1"></div>
-
-                    <!--Grid row-->
-                </div>
-                <!-- Grid container -->
-
-                <!-- Copyright -->
-                <div class="text-center p-3">
-                    <a class="text-white" href="index.html">© 2024 Copyright: FinanSmart.com</a>
-                </div>
-                <!-- Copyright -->
-            </footer>
-        </footer>
     </main>
-</body>
+    <footer class="footer">
+        <footer class=" text-white text-center text-lg-start">
+            <!-- Grid container -->
+            <div class="p-4 row">
+                <!--Grid row-->
+                <div class="col-lg-1"></div>
+                <div class="row col-lg-10">
+                    <!--Grid column-->
+                    <div class="footer-text col-lg-8 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Ипотечный Калькулятор.</h5>
+
+                        <p>
+                            Просьба с пониманием отнестись к тому, что ни администрация «FinanSmart», ни кто-либо
+                            другой не может нести какую-либо ответственность за
+                            принятые Вами решения или совершенные Вами действия, независимо от того, были ли они
+                            основаны на информации портала «FinanSmart», на его рекомендациях и пожеланиях или на
+                            любой
+                            другой информации.
+                        </p>
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-lg-1"></div>
+                    <!--Grid column-->
+                    <div class="footer-links col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="footer-link-title text-uppercase">Навигация:</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#" class="footer-link">На главную</a>
+                            </li>
+                            <li>
+                                <a href="profil.html" class="footer-link">Мой профиль</a>
+                            </li>
+                            <li>
+                                <a href="about.html" class="footer-link">О продукте</a>
+                            </li>
+                            <li>
+                                <a href="support.html" class="footer-link">Поддержка</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+
+                </div>
+                <div class="col-lg-1"></div>
+
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3">
+                <a class="text-white" href="index.html">© 2024 Copyright: FinanSmart.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </footer>
+
+
 
 
 
@@ -255,8 +267,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script/canvas.js"></script>

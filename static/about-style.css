@@ -1,8 +1,8 @@
 .сity{
-    background: url(../static/info_img/about-bg.jpg);
+    background: url(../static/images/r3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     min-height: 100vh;
     margin: 0;
     padding-bottom: 2em;
@@ -16,10 +16,10 @@
 }
 
 .black-red{
-    color: rgba(212, 14, 14, 0.815);
+    color: rgb(255, 255, 255);
 }
 .red{
-    color: rgba(255, 45, 45, 0.705);
+    color: rgba(255, 255, 255, 0.705);
 }
 
 
